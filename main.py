@@ -16,9 +16,11 @@ def main(driver):
 
     workbook = openpyxl.Workbook()
     sheet = workbook.active
-    for i in range(len(elements)):
-        if elements[i].text != "":
-            sheet.cell(row=i+1, column=1, value=elements[i].text)
+    row = 1
+    for e in elements:
+        if e.text != "":
+            sheet.cell(row=row, column=1, value=e.text)
+            row += 1
             time.sleep(1)
     filename = 'output.xlsx'
     workbook.save(filename)
